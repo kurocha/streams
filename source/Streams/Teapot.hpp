@@ -1,0 +1,4 @@
+
+namespace Streams {
+	void sing();
+}
