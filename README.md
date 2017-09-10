@@ -1,10 +1,6 @@
 # Streams
 
-Streams is a fantastic project with lots of potential.
-
-For examples and documentation please see the main [project page][1].
-
-[1]: http://teapot.nz/
+Provides enhanced stream manipulation, including basic support for parsing incoming character data, and TTY color formatting.
 
 [![Build Status](https://travis-ci.org/kurocha/streams.svg?branch=master)](https://travis-ci.org/kurocha/streams)
 
@@ -33,9 +29,27 @@ Run the tests to confirm basic functionality:
 
 ## Usage
 
-You can run the tool by executing the following:
+### Formatted Output
 
-	$ teapot Run/Streams
+Here is a simple example which will write formatted output when running on a TTY:
+
+	// Associate TTY terminal data with the stream:
+	TTY tty(std::cout, terminal_type(std::cout));
+
+	// Setup the desired color/style:
+	Color color(Color::RED);
+	
+	// Write formatted data to the stream:
+	std::cout << color << "Hello World!";
+
+### Parsing Data
+
+Here is an example of how to perform basic data parsing using a delimeter:
+
+	std::stringstream buffer("1,2");
+	int x = 0, y = 0;
+	
+	buffer >> x >> expect<','> >> y;
 
 ## Contributing
 

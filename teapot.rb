@@ -8,14 +8,9 @@ define_project "streams" do |project|
 	project.title = "Streams"
 	project.summary = 'A brief one line summary of the project.'
 	
-	project.description = <<-EOF
-		Streams description.
-	EOF
-	
 	project.license = 'MIT License'
 	
 	project.add_author 'Samuel Williams', email: 'samuel.williams@oriontransfer.co.nz'
-	# project.website = 'http://Streams.com/'
 	
 	project.version = '0.1.0'
 end
@@ -51,34 +46,9 @@ define_target 'streams-test' do |target|
 	
 	target.depends 'Library/UnitTest'
 	target.depends 'Library/Streams'
-	
-	target.provides 'Test/Streams'
-end
-
-define_target 'streams-executable' do |target|
-	target.build do
-		source_root = target.package.path + 'source'
-		
-		build executable: 'Streams', source_files: source_root.glob('Streams.cpp')
-	end
-	
-	target.depends 'Build/Files'
-	target.depends 'Build/Clang'
-	
-	target.depends :platform
 	target.depends 'Language/C++14', private: true
 	
-	target.depends 'Library/Streams'
-	target.provides 'Executable/Streams'
-end
-
-define_target 'streams-run' do |target|
-	target.build do |*arguments|
-		run executable: 'Streams', arguments: arguments
-	end
-	
-	target.depends 'Executable/Streams'
-	target.provides 'Run/Streams'
+	target.provides 'Test/Streams'
 end
 
 # Configurations
