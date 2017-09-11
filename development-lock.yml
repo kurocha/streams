@@ -35,3 +35,9 @@ build-darwin:
 build-files:
   :commit: 00c6cef5ef06157b939ee0775f765a45af763ac1
   :branch: master
+platform-linux:
+  :commit: e4fa0aaccab05e43b2b9118d5fd1fbe9c1f31dc0
+  :branch: master
+build-linux:
+  :commit: 6de534e35547e5f0bb8f35e57d39464facec9df4
+  :branch: master
