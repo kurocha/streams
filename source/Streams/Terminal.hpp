@@ -28,6 +28,9 @@ namespace Streams
 		TTY(std::ios_base & stream, Terminal terminal) : _stream(stream), _terminal(terminal)
 		{
 			stream.iword(INDEX) = static_cast<int>(_terminal);
+			
+			//assert(stream.pword(INDEX) == nullptr);
+			//stream.pword(INDEX) = this;
 		}
 		
 		// Query a stream for TTY details.
@@ -37,7 +40,7 @@ namespace Streams
 		
 		~TTY()
 		{
-			_stream.iword(INDEX) = 0;
+			//_stream.iword(INDEX) = 0;
 		}
 		
 		explicit operator bool() const {return _terminal != Terminal::NONE;}
