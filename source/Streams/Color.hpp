@@ -35,7 +35,7 @@ namespace Streams
 		static const int UNSPECIFIED = -1;
 		
 		// Specific color style:
-		Color(int foreground, int background, int attributes) : foreground(foreground), background(background), attributes(attributes) {}
+		Color(int foreground, int background = UNSPECIFIED, int attributes = UNSPECIFIED) : foreground(foreground), background(background), attributes(attributes) {}
 		
 		// Reset style back to default.
 		Color() : foreground(UNSPECIFIED), background(UNSPECIFIED), attributes(NORMAL) {}
