@@ -46,7 +46,7 @@ namespace Streams
 		explicit operator bool() const {return _terminal != Terminal::NONE;}
 		Terminal terminal() const noexcept {return _terminal;}
 		
-	private:
+	protected:
 		std::ios_base & _stream;
 		Terminal _terminal;
 		
