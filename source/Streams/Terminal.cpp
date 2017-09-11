@@ -9,6 +9,7 @@
 #include "Terminal.hpp"
 
 #include <unistd.h>
+#include <iostream>
 
 namespace Streams
 {
@@ -23,7 +24,7 @@ namespace Streams
 		}
 	}
 	
-	int descriptor_for(std::ios_base & stream)
+	int descriptor_for(std::ios & stream)
 	{
 		if (stream.rdbuf() == std::cin.rdbuf()) {
 			return fileno(stdin);
@@ -40,7 +41,7 @@ namespace Streams
 		return -1;
 	}
 	
-	Terminal terminal_type(std::ios_base & stream)
+	Terminal terminal_type(std::ios & stream)
 	{
 		auto descriptor = descriptor_for(stream);
 		

@@ -18,7 +18,7 @@ namespace Streams
 	};
 	
 	Terminal terminal_type(int descriptor);
-	Terminal terminal_type(std::ios_base & stream);
+	Terminal terminal_type(std::ios & stream);
 	
 	// Bind to an output stream to control TTY escape codes.
 	class TTY
