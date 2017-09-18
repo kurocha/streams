@@ -61,7 +61,7 @@ define_configuration 'development' do |configuration|
 	configuration.require 'platforms'
 	
 	# Provides unit testing infrastructure and generators:
-	configuration.require 'unit-test'
+	configuration.require 'unit-test', import: false
 	
 	# Provides some useful C++ generators:
 	configuration.require 'generate-cpp-class'
