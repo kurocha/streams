@@ -9,6 +9,7 @@
 #include "Safe.hpp"
 
 #include <iomanip>
+#include <cxxabi.h>
 
 namespace Streams
 {
@@ -21,7 +22,7 @@ namespace Streams
 		output << '"';
 		
 		std::ios::fmtflags initial_flags{output.flags()};
-		output << std::hex << std::uppercase << std::setw(2) << std::setfill('0');
+		output << std::hex << std::uppercase;
 		
 		for (; i != end; ++i) {
 			if (*i == '\0') output << "\\0"; else
@@ -42,5 +43,27 @@ namespace Streams
 		output.flags(initial_flags);
 		
 		return output;
+	}
+	
+	std::ostream & operator<<(std::ostream & output, const Safe<std::nullptr_t> & safe)
+	{
+		return output << "nullptr";
+	}
+
+	std::string demangle(const char* name)
+	{
+		int status = 0; // some arbitrary value to eliminate the compiler warning
+
+		std::unique_ptr<char, void(*)(void*)> result{
+			abi::__cxa_demangle(name, NULL, NULL, &status),
+			std::free
+		};
+
+		return (status == 0) ? result.get() : name;
+	}
+
+	std::ostream & operator<<(std::ostream & output, const Safe<std::type_info> & safe)
+	{
+		return output << "type_info(" << demangle(safe.value.name()) << ")";
 	}
 }

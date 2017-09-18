@@ -25,7 +25,6 @@ namespace Streams
 				std::stringstream buffer;
 				buffer << safe(text);
 				
-				std::cerr << buffer.str() << std::endl;
 				for (auto & c : buffer.str())
 					examiner.expect(c) >= 32;
 			}
@@ -39,6 +38,24 @@ namespace Streams
 				buffer << safe(text);
 				
 				examiner.expect(buffer.str()) != text;
+			}
+		},
+		
+		{"it should print nullptr",
+			[](UnitTest::Examiner & examiner) {
+				std::stringstream buffer;
+				buffer << safe(nullptr);
+				
+				examiner.expect(buffer.str()) == "nullptr";
+			}
+		},
+		
+		{"it should print type info",
+			[](UnitTest::Examiner & examiner) {
+				std::stringstream buffer;
+				buffer << safe(typeid(int));
+				
+				examiner.expect(buffer.str()) == "type_info(int)";
 			}
 		}
 	};
