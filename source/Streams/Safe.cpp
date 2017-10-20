@@ -66,4 +66,9 @@ namespace Streams
 	{
 		return output << "type_info(" << demangle(safe.value.name()) << ")";
 	}
+	
+	std::ostream & operator<<(std::ostream & output, const Safe<const char *> & safe)
+	{
+		return output << Safe<std::string>{safe.value};
+	}
 }

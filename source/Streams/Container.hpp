@@ -15,7 +15,7 @@
 
 namespace Streams
 {
-	template <typename T, typename _ = void>
+	template <typename T, typename = void>
 	struct is_container : std::false_type {};
 
 	template <typename... Ts>
@@ -30,20 +30,19 @@ namespace Streams
 		typename std::conditional<
 			false,
 			is_container_helper<
-				decltype(std::begin(std::declval<T>())),
-				decltype(std::end(std::declval<T>()))
+				decltype(std::begin(std::declval<const T &>())),
+				decltype(std::end(std::declval<const T &>()))
 			>,
 			void
 		>::type
 	> : public std::true_type {};
 	
 	template <typename T>
-	struct Safe<T, is_container<T>>
+	struct Safe<T, typename std::enable_if<is_container<T>::value>::type>
 	{
 		const T & value;
 		
-		template <typename T>
-		void print(std::ostream & output)
+		void print(std::ostream & output) const
 		{
 			output << '{';
 			bool first = true;
@@ -57,5 +56,5 @@ namespace Streams
 			
 			output << '}';
 		}
-	}
+	};
 }

@@ -12,13 +12,13 @@ platforms:
   :commit: 9b3dc9a1b13108f933146cda6c12a994c5c954a0
   :branch: master
 unit-test:
-  :commit: 9cddeac10c61459f065702c78b0498f5645cb249
+  :commit: 2594d021a52b06ba76fba15dbbe516eda8486321
   :branch: master
 generate-cpp-class:
   :commit: a7219c511be8af5228c4daf575508c5667108998
   :branch: master
 variants:
-  :commit: 9242ee953df5eff1fa0064c2718618f154190edd
+  :commit: 03ac6a3c2852c33e5aba0deb6190dcd1070318ee
   :branch: master
 platform-darwin-osx:
   :commit: a28cf3da75b2b63d24a36cc49bd97babac6499cb

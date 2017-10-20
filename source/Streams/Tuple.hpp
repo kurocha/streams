@@ -10,20 +10,22 @@
 
 #include "Safe.hpp"
 
+#include <tuple>
+
 namespace Streams
 {
 	template <typename... Args>
-	struct Safe<std::tuple<Args...>, std::true_type>
+	struct Safe<std::tuple<Args...>, void>
 	{
 		const std::tuple<Args...> value;
 		
 		template <std::size_t N, typename... T>
 		typename std::enable_if<(N >= sizeof...(T))>::type
-		print_tuple(std::ostream &, const std::tuple<T...> &) {}
+		print_tuple(std::ostream &, const std::tuple<T...> &) const {}
 
 		template <std::size_t N, typename... T>
 		typename std::enable_if<(N < sizeof...(T))>::type
-		print_tuple(std::ostream & output, const std::tuple<T...> & tuple)
+		print_tuple(std::ostream & output, const std::tuple<T...> & tuple) const
 		{
 			if (N != 0)
 				output << ", ";
@@ -33,7 +35,7 @@ namespace Streams
 			print_tuple<N+1>(output, tuple);
 		}
 		
-		void print(std::ostream & output)
+		void print(std::ostream & output) const
 		{
 			output << '(';
 			

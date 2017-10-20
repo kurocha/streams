@@ -14,12 +14,12 @@
 namespace Streams
 {
 	// Provides a way to output data which isn't guaranteed to contain only printable characters. It also includes additional helpers for outputting data-structures in a nested fashion.
-	template <typename ValueT, typename = std::true_type>
+	template <typename ValueT, typename = void>
 	struct Safe
 	{
 		const ValueT & value;
 		
-		void print(std::ostream & stream)
+		void print(std::ostream & stream) const
 		{
 			stream << value;
 		}
@@ -43,6 +43,7 @@ namespace Streams
 	
 	// TODO: This should eventually be std::string_view.
 	std::ostream & operator<<(std::ostream & output, const Safe<std::string> & safe);
+	std::ostream & operator<<(std::ostream & output, const Safe<const char *> & safe);
 	
 	template <std::size_t N>
 	std::ostream & operator<<(std::ostream & output, const Safe<char[N]> & safe)
