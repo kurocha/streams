@@ -14,13 +14,15 @@
 namespace Streams
 {
 	// Provides a way to output data which isn't guaranteed to contain only printable characters. It also includes additional helpers for outputting data-structures in a nested fashion.
-	template <typename ValueT>
-	class Safe
+	template <typename ValueT, typename = std::true_type>
+	struct Safe
 	{
-	public:
-		Safe(const ValueT & value) : value(value) {}
-		
 		const ValueT & value;
+		
+		void print(std::ostream & stream)
+		{
+			stream << value;
+		}
 	};
 	
 	template <typename ValueT>
@@ -31,12 +33,6 @@ namespace Streams
 	
 	std::ostream & operator<<(std::ostream & output, const Safe<std::nullptr_t> & safe);
 	std::ostream & operator<<(std::ostream & output, const Safe<std::type_info> & safe);
-	
-	template <typename ValueT>
-	std::ostream & operator<<(std::ostream & output, const Safe<ValueT> & safe)
-	{
-		return output << safe.value;
-	}
 	
 	// Always output pointers as raw values, don't try to print them!
 	template <typename ValueT>
@@ -52,5 +48,13 @@ namespace Streams
 	std::ostream & operator<<(std::ostream & output, const Safe<char[N]> & safe)
 	{
 		return output << Safe<std::string>{safe.value};
+	}
+	
+	template <typename T>
+	std::ostream & operator<<(std::ostream & output, const Safe<T> & safe)
+	{
+		safe.print(output);
+		
+		return output;
 	}
 }
