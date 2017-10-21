@@ -18,7 +18,7 @@ namespace Streams
 	UnitTest::Suite ContainerTestSuite {
 		"Streams::Container",
 		
-		{"it shuold print array",
+		{"it should print array",
 			[](UnitTest::Examiner & examiner) {
 				int values[4] = {1, 2, 3, 4};
 				std::stringstream buffer;
@@ -29,7 +29,7 @@ namespace Streams
 			}
 		},
 		
-		{"it shuold print vector",
+		{"it should print vector",
 			[](UnitTest::Examiner & examiner) {
 				std::vector<int> values = {1, 2, 3, 4};
 				std::stringstream buffer;
