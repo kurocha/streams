@@ -49,6 +49,11 @@ namespace Streams
 	{
 		return output << "nullptr";
 	}
+	
+	std::ostream & operator<<(std::ostream & output, const Safe<bool> & safe)
+	{
+		return output << (safe.value ? "true" : "false");
+	}
 
 	std::string demangle(const char* name)
 	{

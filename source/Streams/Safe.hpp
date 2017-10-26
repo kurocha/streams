@@ -34,6 +34,8 @@ namespace Streams
 	std::ostream & operator<<(std::ostream & output, const Safe<std::nullptr_t> & safe);
 	std::ostream & operator<<(std::ostream & output, const Safe<std::type_info> & safe);
 	
+	std::ostream & operator<<(std::ostream & output, const Safe<bool> & safe);
+	
 	// Always output pointers as raw values, don't try to print them!
 	template <typename ValueT>
 	std::ostream & operator<<(std::ostream & output, const Safe<ValueT *> & safe)
