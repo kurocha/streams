@@ -12,7 +12,7 @@ platforms:
   :commit: 9b3dc9a1b13108f933146cda6c12a994c5c954a0
   :branch: master
 unit-test:
-  :commit: 2594d021a52b06ba76fba15dbbe516eda8486321
+  :commit: cceda1279365acf922e4aef944c262318818fccf
   :branch: master
 generate-cpp-class:
   :commit: a7219c511be8af5228c4daf575508c5667108998
