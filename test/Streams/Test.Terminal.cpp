@@ -12,13 +12,15 @@
 
 namespace Streams
 {
+	using namespace UnitTest::Expectations;
+	
 	UnitTest::Suite TerminalTestSuite {
 		"Streams::Terminal",
 		
 		{"it can detect terminal type",
 			[](UnitTest::Examiner & examiner) {
-				examiner.check(terminal_type(0) == Terminal::XTERM);
-				examiner.check(terminal_type(1) == Terminal::XTERM);
+				examiner.expect(terminal_type(0)).to(be == Terminal::XTERM);
+				examiner.expect(terminal_type(1)).to(be == Terminal::XTERM);
 			}
 		},
 	};

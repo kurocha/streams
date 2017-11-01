@@ -15,6 +15,8 @@
 
 namespace Streams
 {
+	using namespace UnitTest::Expectations;
+	
 	UnitTest::Suite ColorTestSuite {
 		"Streams::Color",
 		
@@ -27,7 +29,7 @@ namespace Streams
 				
 				buffer << color << "Hello World!";
 				
-				examiner.expect(buffer.str()) == "\033[31mHello World!";
+				examiner.expect(buffer.str()).to(be == "\033[31mHello World!");
 			}
 		},
 		
@@ -39,7 +41,7 @@ namespace Streams
 				
 				buffer << color << "Hello World!";
 				
-				examiner.expect(buffer.str()) == "Hello World!";
+				examiner.expect(buffer.str()).to(be == "Hello World!");
 			}
 		},
 	};

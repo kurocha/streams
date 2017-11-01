@@ -14,6 +14,8 @@
 
 namespace Streams
 {
+	using namespace UnitTest::Expectations;
+	
 	UnitTest::Suite ExpectTestSuite {
 		"Streams::Expect",
 		
@@ -24,10 +26,10 @@ namespace Streams
 				
 				buffer >> x >> expect<','> >> y;
 				
-				examiner.expect(buffer.eof()) == true;
-				examiner.expect(buffer.fail()) == false;
-				examiner.expect(x) == 1;
-				examiner.expect(y) == 2;
+				examiner.expect(buffer.eof()).to(be_true);
+				examiner.expect(buffer.fail()).to(be_false);
+				examiner.expect(x).to(be == 1);
+				examiner.expect(y).to(be == 2);
 			}
 		},
 		
@@ -38,9 +40,9 @@ namespace Streams
 				
 				buffer >> x >> expect<','> >> y;
 				
-				examiner.expect(buffer.fail()) == false;
-				examiner.expect(x) == 1;
-				examiner.expect(y) == 2;
+				examiner.expect(buffer.fail()).to(be_false);
+				examiner.expect(x).to(be == 1);
+				examiner.expect(y).to(be == 2);
 			}
 		},
 	};

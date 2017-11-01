@@ -12,6 +12,8 @@
 
 namespace Streams
 {
+	using namespace UnitTest::Expectations;
+	
 	UnitTest::Suite TupleTestSuite {
 		"Streams::Tuple",
 		
@@ -22,7 +24,7 @@ namespace Streams
 				
 				buffer << safe(tuple);
 				
-				examiner.expect(buffer.str()) == "(5, \"cats\")";
+				examiner.expect(buffer.str()).to(be == "(5, \"cats\")");
 			}
 		},
 	};

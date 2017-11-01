@@ -12,6 +12,8 @@
 
 namespace Streams
 {
+	using namespace UnitTest::Expectations;
+	
 	UnitTest::Suite SafeTestSuite {
 		"Streams::Safe",
 		
@@ -26,7 +28,7 @@ namespace Streams
 				buffer << safe(text);
 				
 				for (auto & c : buffer.str())
-					examiner.expect(c) >= 32;
+					examiner.expect(c).to(be >= 32);
 			}
 		},
 		
@@ -37,7 +39,7 @@ namespace Streams
 				std::stringstream buffer;
 				buffer << safe(text);
 				
-				examiner.expect(buffer.str()) != text;
+				examiner.expect(buffer.str()).to(be != text);
 			}
 		},
 		
@@ -46,7 +48,7 @@ namespace Streams
 				std::stringstream buffer;
 				buffer << safe(nullptr);
 				
-				examiner.expect(buffer.str()) == "nullptr";
+				examiner.expect(buffer.str()).to(be == "nullptr");
 			}
 		},
 		
@@ -55,7 +57,7 @@ namespace Streams
 				std::stringstream buffer;
 				buffer << safe(typeid(int));
 				
-				examiner.expect(buffer.str()) == "type_info(int)";
+				examiner.expect(buffer.str()).to(be == "type_info(int)");
 			}
 		}
 	};

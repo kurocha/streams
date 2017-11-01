@@ -15,6 +15,8 @@
 
 namespace Streams
 {
+	using namespace UnitTest::Expectations;
+	
 	UnitTest::Suite ContainerTestSuite {
 		"Streams::Container",
 		
@@ -25,7 +27,7 @@ namespace Streams
 				
 				buffer << safe(values);
 				
-				examiner.expect(buffer.str()) == "{1, 2, 3, 4}";
+				examiner.expect(buffer.str()).to(be == "{1, 2, 3, 4}");
 			}
 		},
 		
@@ -36,7 +38,7 @@ namespace Streams
 				
 				buffer << safe(values);
 				
-				examiner.expect(buffer.str()) == "{1, 2, 3, 4}";
+				examiner.expect(buffer.str()).to(be == "{1, 2, 3, 4}");
 			}
 		},
 	};

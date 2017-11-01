@@ -12,6 +12,8 @@
 
 namespace Streams
 {
+	using namespace UnitTest::Expectations;
+	
 	UnitTest::Suite ArrayTestSuite {
 		"Streams::Array",
 		
@@ -22,7 +24,7 @@ namespace Streams
 				
 				buffer >> values;
 				
-				examiner.expect(values) == std::array<int, 4>{1, 2, 3, 4};
+				examiner.expect(values).to(be == std::array<int, 4>{1, 2, 3, 4});
 			}
 		},
 	};
