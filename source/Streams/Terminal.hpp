@@ -35,6 +35,9 @@ namespace Streams
 			//stream.pword(INDEX) = this;
 		}
 		
+		// Copy the terminal status from one output to another.
+		TTY(std::ios_base & stream, std::ios_base & output) : TTY(stream, static_cast<Terminal>(output.iword(INDEX))) {}
+		
 		// Query a stream for TTY details.
 		TTY(std::ios_base & stream) : _stream(stream), _terminal(static_cast<Terminal>(stream.iword(INDEX)))
 		{
