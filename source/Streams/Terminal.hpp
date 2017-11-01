@@ -17,6 +17,8 @@ namespace Streams
 		XTERM = 1,
 	};
 	
+	std::ostream & operator<<(std::ostream &, const Terminal & terminal);
+	
 	Terminal terminal_type(int descriptor);
 	Terminal terminal_type(std::ios & stream);
 	

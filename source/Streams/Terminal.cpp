@@ -13,6 +13,16 @@
 
 namespace Streams
 {
+	std::ostream & operator<<(std::ostream & output, const Terminal & terminal)
+	{
+		switch (terminal) {
+			case Terminal::NONE:
+				return output << "Terminal::NONE";
+			case Terminal::XTERM:
+				return output << "Terminal::XTERM";
+		}
+	}
+	
 	const int TTY::INDEX = std::ios_base::xalloc();
 	
 	Terminal terminal_type(int descriptor)
