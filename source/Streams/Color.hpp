@@ -18,7 +18,10 @@ namespace Streams
 			BOLD = 1,
 			FAINT = 2,
 			ITALIC = 3,
-			UNDERLINE = 4
+			UNDERLINE = 4,
+			BLINK = 5,
+			REVERSE = 7,
+			HIDDEN = 8,
 		};
 		
 		enum Colors {
@@ -29,7 +32,8 @@ namespace Streams
 			BLUE = 4,
 			MAGENTA = 5,
 			CYAN = 6,
-			WHITE = 7
+			WHITE = 7,
+			DEFAULT = 9,
 		};
 		
 		static const int UNSPECIFIED = -1;
