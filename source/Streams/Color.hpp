@@ -13,11 +13,12 @@
 namespace Streams
 {
 	struct Color {
-		template <typename ValueT>
+		template <typename ColorT, typename ValueT>
 		struct Wrapper
 		{
-			const Color & color;
-			const ValueT & value;
+			// We could always just copy the color, but I wanted to explore the semantics of rvalue references.
+			ColorT color;
+			const ValueT value;
 			
 			friend std::ostream & operator<<(std::ostream & output, const Wrapper & wrapper)
 			{
@@ -26,7 +27,13 @@ namespace Streams
 		};
 		
 		template <typename ValueT>
-		Wrapper<ValueT> operator()(const ValueT & value) const noexcept
+		Wrapper<const Color &, ValueT> operator()(ValueT && value) const & noexcept
+		{
+			return {*this, value};
+		}
+		
+		template <typename ValueT>
+		Wrapper<Color, ValueT> operator()(ValueT && value) && noexcept
 		{
 			return {*this, value};
 		}
