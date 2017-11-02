@@ -13,6 +13,24 @@
 namespace Streams
 {
 	struct Color {
+		template <typename ValueT>
+		struct Wrapper
+		{
+			const Color & color;
+			const ValueT & value;
+			
+			friend std::ostream & operator<<(std::ostream & output, const Wrapper & wrapper)
+			{
+				return output << wrapper.color << wrapper.value << Color();
+			}
+		};
+		
+		template <typename ValueT>
+		Wrapper<ValueT> operator()(const ValueT & value) const noexcept
+		{
+			return {*this, value};
+		}
+		
 		enum Attributes {
 			NORMAL = 0,
 			BOLD = 1,
