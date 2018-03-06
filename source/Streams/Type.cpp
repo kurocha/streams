@@ -9,6 +9,7 @@
 #include "Type.hpp"
 
 #include <cxxabi.h>
+#include <memory>
 
 namespace Streams
 {
