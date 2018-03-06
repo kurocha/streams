@@ -31,28 +31,6 @@ namespace Streams
 		return {value};
 	}
 	
-	std::ostream & operator<<(std::ostream & output, const Safe<std::nullptr_t> & safe);
-	std::ostream & operator<<(std::ostream & output, const Safe<std::type_info> & safe);
-	
-	std::ostream & operator<<(std::ostream & output, const Safe<bool> & safe);
-	
-	// Always output pointers as raw values, don't try to print them!
-	template <typename ValueT>
-	std::ostream & operator<<(std::ostream & output, const Safe<ValueT *> & safe)
-	{
-		return output << static_cast<const void *>(safe.value);
-	}
-	
-	// TODO: This should eventually be std::string_view.
-	std::ostream & operator<<(std::ostream & output, const Safe<std::string> & safe);
-	std::ostream & operator<<(std::ostream & output, const Safe<const char *> & safe);
-	
-	template <std::size_t N>
-	std::ostream & operator<<(std::ostream & output, const Safe<char[N]> & safe)
-	{
-		return output << Safe<std::string>{safe.value};
-	}
-	
 	template <typename T>
 	std::ostream & operator<<(std::ostream & output, const Safe<T> & safe)
 	{
@@ -61,3 +39,8 @@ namespace Streams
 		return output;
 	}
 }
+
+#include "String.hpp"
+#include "Boolean.hpp"
+#include "Pointer.hpp"
+#include "Type.hpp"

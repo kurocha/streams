@@ -1,6 +1,6 @@
 ---
 generate-project:
-  :commit: 4598c7ffcf33d5a572da273818957e2a42e3e0f6
+  :commit: 84440fd453941ca1e6b1c8bbb020d6605dd8892e
   :branch: master
 generate-travis:
   :commit: 206b0412bb9888279db6c0758a33cf22e7b47363
@@ -12,7 +12,7 @@ platforms:
   :commit: 9b3dc9a1b13108f933146cda6c12a994c5c954a0
   :branch: master
 unit-test:
-  :commit: cceda1279365acf922e4aef944c262318818fccf
+  :commit: 579028c8e1231037025cd6376ba7d33d43c8b38e
   :branch: master
 generate-cpp-class:
   :commit: a7219c511be8af5228c4daf575508c5667108998
@@ -36,7 +36,7 @@ build-files:
   :commit: 00c6cef5ef06157b939ee0775f765a45af763ac1
   :branch: master
 platform-linux:
-  :commit: e4fa0aaccab05e43b2b9118d5fd1fbe9c1f31dc0
+  :commit: da4b316877df89a54e69671f01fcf01ad1e41ed9
   :branch: master
 build-linux:
   :commit: 6de534e35547e5f0bb8f35e57d39464facec9df4

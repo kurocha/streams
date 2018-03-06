@@ -59,6 +59,6 @@ namespace Streams
 				
 				examiner.expect(buffer.str()).to(be == "type_info(int)");
 			}
-		}
+		},
 	};
 }
