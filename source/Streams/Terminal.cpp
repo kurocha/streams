@@ -21,6 +21,8 @@ namespace Streams
 			case Terminal::XTERM:
 				return output << "Terminal::XTERM";
 		}
+		
+		return output;
 	}
 	
 	const int TTY::INDEX = std::ios_base::xalloc();
