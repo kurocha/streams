@@ -1,6 +1,6 @@
 # Teapot v2.0.0 configuration generated at 2017-09-11 10:45:16 +1200
 
-required_version "2.0"
+required_version "2.3"
 
 # Project Metadata
 
@@ -18,10 +18,10 @@ end
 # Build Targets
 
 define_target 'streams-library' do |target|
+	source_root = target.package.path + 'source'
+	
 	target.build do
-		source_root = target.package.path + 'source'
-		copy headers: source_root.glob('Streams/**/*.{h,hpp}')
-		build static_library: 'Streams', source_files: source_root.glob('Streams/**/*.cpp')
+		build prefix: target.name, static_library: 'Streams', source_files: source_root.glob('Streams/**/*.cpp')
 	end
 	
 	target.depends 'Build/Files'
@@ -32,7 +32,11 @@ define_target 'streams-library' do |target|
 	
 	target.provides 'Library/Streams' do
 		append linkflags [
-			->{install_prefix + 'lib/libStreams.a'},
+			->{build_prefix + target.name + 'Streams.a'},
+		]
+		
+		append header_search_paths [
+			source_root
 		]
 	end
 end
