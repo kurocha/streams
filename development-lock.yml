@@ -1,9 +1,9 @@
 ---
 generate-project:
-  :commit: 84440fd453941ca1e6b1c8bbb020d6605dd8892e
+  :commit: 6e1213ac380ddf82a7e96c0798d2beb55cf11db7
   :branch: master
 generate-travis:
-  :commit: 206b0412bb9888279db6c0758a33cf22e7b47363
+  :commit: 25acb6c2650d6818d1055c33d8e307d3b6be0f74
   :branch: master
 generate-template:
   :commit: ad0dcfb6da64cc0508b71916b30e1050c82ecea7
@@ -12,28 +12,28 @@ platforms:
   :commit: 9b3dc9a1b13108f933146cda6c12a994c5c954a0
   :branch: master
 unit-test:
-  :commit: 579028c8e1231037025cd6376ba7d33d43c8b38e
+  :commit: f8304d609ee08c1082805f5496e519de54d2307e
   :branch: master
 generate-cpp-class:
   :commit: a7219c511be8af5228c4daf575508c5667108998
   :branch: master
 variants:
-  :commit: 03ac6a3c2852c33e5aba0deb6190dcd1070318ee
+  :commit: f6a26a8ac3a47a23a213cbd15da2183239d394d1
   :branch: master
 platform-darwin-osx:
-  :commit: a28cf3da75b2b63d24a36cc49bd97babac6499cb
+  :commit: b02e5db509111e3a338b5133cbdce0239687bff9
   :branch: master
 platform-darwin-ios:
   :commit: c81ccc5ee73cb1c6ae31e378148c4cb8c9f8759e
   :branch: master
 build-clang:
-  :commit: e56387e331223851ab2b5202bed767280748f698
+  :commit: e00c30238dbc03a0a862936182967c8a08e942a6
   :branch: master
 build-darwin:
-  :commit: 9f2234a91f84955cd82f2af89efea9734c6475ca
+  :commit: 90cb160f84c99d6791ac45e38b33de2917434f91
   :branch: master
 build-files:
-  :commit: 00c6cef5ef06157b939ee0775f765a45af763ac1
+  :commit: 2e5392ef4e171885b621288c7829e5160f1255bf
   :branch: master
 platform-linux:
   :commit: da4b316877df89a54e69671f01fcf01ad1e41ed9
