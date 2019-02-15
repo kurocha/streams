@@ -1,6 +1,6 @@
 # Teapot v2.0.0 configuration generated at 2017-09-11 10:45:16 +1200
 
-required_version "2.3"
+required_version "3.0"
 
 # Project Metadata
 
@@ -18,41 +18,29 @@ end
 # Build Targets
 
 define_target 'streams-library' do |target|
-	source_root = target.package.path + 'source'
-	
-	target.build do
-		build prefix: target.name, static_library: 'Streams', source_files: source_root.glob('Streams/**/*.cpp')
-	end
-	
-	target.depends 'Build/Files'
-	target.depends 'Build/Clang'
-	
-	target.depends :platform
-	target.depends 'Language/C++14', private: true
+	target.depends 'Language/C++14'
 	
 	target.provides 'Library/Streams' do
-		append linkflags [
-			->{build_prefix + target.name + 'Streams.a'},
-		]
+		source_root = target.package.path + 'source'
+	
+		library_path = build static_library: 'Streams', source_files: source_root.glob('Streams/**/*.cpp')
 		
-		append header_search_paths [
-			source_root
-		]
+		append linkflags library_path
+		append header_search_paths source_root
 	end
 end
 
 define_target 'streams-test' do |target|
-	target.build do |*arguments|
+	target.depends 'Library/UnitTest'
+	target.depends 'Library/Streams'
+	
+	target.depends 'Language/C++14'
+	
+	target.provides 'Test/Streams' do |*arguments|
 		test_root = target.package.path + 'test'
 		
 		run tests: 'Streams', source_files: test_root.glob('Streams/**/*.cpp'), arguments: arguments
 	end
-	
-	target.depends 'Library/UnitTest'
-	target.depends 'Library/Streams'
-	target.depends 'Language/C++14', private: true
-	
-	target.provides 'Test/Streams'
 end
 
 # Configurations
