@@ -39,7 +39,7 @@ define_target 'streams-test' do |target|
 	target.provides 'Test/Streams' do |*arguments|
 		test_root = target.package.path + 'test'
 		
-		run tests: 'Streams', source_files: test_root.glob('Streams/**/*.cpp'), arguments: arguments
+		run source_files: test_root.glob('Streams/**/*.cpp'), arguments: arguments
 	end
 end
 
